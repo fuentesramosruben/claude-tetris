@@ -1,4 +1,4 @@
-name: Issue Triage
+name: Claude Issue Triage
 
 # Analiza cada issue nuevo o editado: asigna labels y publica un diagnóstico.
 # Si el issue se edita, el diagnóstico se actualiza (no se duplican comentarios).
