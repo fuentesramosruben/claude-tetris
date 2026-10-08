@@ -46,7 +46,7 @@ jobs:
                - `needs-info` si falta información para reproducir o entender el issue
                Si un label elegido no existe, créalo con `gh label create`. Aplica con `gh issue edit ... --add-label`.
                Si el issue se editó (`edited`), quita con `--remove-label` los labels de esas categorías que ya no apliquen. No toques labels puestos por humanos fuera de esas categorías.
-            4. Diagnóstico: publica UN solo comentario con `gh issue comment ${{ github.event.issue.number }} --edit-last --create-if-none --body-file <archivo>` (así, si ya existe, se actualiza en lugar de duplicarse). Escríbelo en español con este formato:
+            4. Diagnóstico: publica UN solo comentario con `gh issue comment ${{ github.event.issue.number }} --edit-last --create-if-none --body-file <archivo>` (así, si ya existe, se actualiza en lugar de duplicarse). Escríbelo en español y SIEMPRE en formato Markdown válido que GitHub (GitHub Flavored Markdown) renderice correctamente: usa encabezados `##`, **negritas**, listas con `-` o numeradas, bloques de código con triple acento grave (indicando el lenguaje, p. ej. ```js) y `código en línea` para archivos y funciones. Deja una línea en blanco entre secciones y listas para que se rendericen bien. Usa este formato:
 
                ## 🔍 Diagnóstico automático
                **Resumen:** una o dos frases.
