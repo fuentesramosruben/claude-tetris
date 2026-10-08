@@ -20,4 +20,5 @@ Tres archivos: `index.html` (DOM + canvases), `style.css`, `game.js` (toda la l�
 - **Piezas**: matrices en `PIECES` cuyo valor de celda (1–7) indexa `COLORS`; el tablero guarda ese mismo índice (0 = vacío). Rotación = `rotateCW` + wall kicks horizontales simples (`[0,-1,1,-2,2]`) en `tryRotate`.
 - **Tamaños acoplados**: `COLS`/`ROWS`/`BLOCK` en `game.js` deben coincidir con `width`/`height` de `<canvas id="board">` en `index.html` (300×600). El canvas `next-canvas` es 120×120 (cuadrícula 4×4 de 30px).
 - El HUD (`updateHUD`) se actualiza por IDs del DOM (`score`, `lines`, `level`, `overlay*`, `restart-btn`) que deben existir en `index.html`.
+- **Tema claro/oscuro**: colores en variables CSS (`:root` oscuro por defecto, `:root[data-theme="light"]`). `applyTheme()` en `game.js` guarda la preferencia en `localStorage`, cachea `--grid` para `drawGrid()` y elige `COLORS` o `COLORS_LIGHT`. El botón `#theme-toggle` debe existir en `index.html`; un script inline en `<head>` aplica el tema antes de pintar.
 - Puntuación: `LINE_SCORES[n] * level`; soft drop +1/fila, hard drop +2/celda. Velocidad: `max(100, 1000 - (level-1)*90)` ms; nivel sube cada 10 líneas.
