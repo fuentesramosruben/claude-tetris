@@ -69,6 +69,7 @@ let gridColor = '#22222e';
 let palette = COLORS;
 
 let startLevel = 1;
+let runStartLevel = 1; // nivel inicial de la partida en curso
 let inputLockUntil = 0; // ignora teclas tras reanudar
 let board, current, next, score, lines, level, paused, gameOver, lastTime, dropAccum, dropInterval, animId;
 
@@ -142,7 +143,7 @@ function clearLines() {
   if (cleared) {
     lines += cleared;
     score += (LINE_SCORES[cleared] || 0) * level;
-    level = Math.max(startLevel, Math.floor(lines / 10) + 1);
+    level = Math.max(runStartLevel, Math.floor(lines / 10) + 1);
     dropInterval = speedFor(level);
     updateHUD();
   }
@@ -291,7 +292,7 @@ function togglePause() {
   } else {
     cancelAnimationFrame(animId);
     pauseMenu.classList.remove('hidden');
-    resumeBtn.focus();
+    if (document.activeElement) document.activeElement.blur();
   }
 }
 
@@ -328,7 +329,8 @@ function init() {
   board = createBoard();
   score = 0;
   lines = 0;
-  level = startLevel;
+  runStartLevel = startLevel;
+  level = runStartLevel;
   paused = false;
   gameOver = false;
   dropInterval = speedFor(level);
@@ -345,7 +347,7 @@ function init() {
 }
 
 document.addEventListener('keydown', e => {
-  if (e.code === 'KeyP' || e.code === 'Escape') {
+  if ((e.code === 'KeyP' || e.code === 'Escape') && !(e.target && e.target.tagName === 'SELECT')) {
     if (!e.repeat) togglePause();
     return;
   }
