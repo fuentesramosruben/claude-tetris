@@ -222,3 +222,36 @@ kbd {
 #restart-btn:hover {
   background: var(--accent-hover);
 }
+
+/* ---- Skins ---- */
+#skin-box {
+  position: fixed;
+  top: 16px;
+  right: 130px;
+}
+
+#skin-select {
+  background: var(--board-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#skin-select:hover {
+  border-color: var(--accent);
+}
+
+/* Neón: tablero y "Siguiente" negros en ambos temas */
+:root[data-skin="neon"] {
+  --board-bg: #000000;
+  --grid: #14141f;
+}
+
+/* Neon en tema claro: los botones superiores no deben heredar el negro */
+:root[data-skin="neon"][data-theme="light"] #theme-toggle,
+:root[data-skin="neon"][data-theme="light"] #skin-select {
+  background: #ffffff;
+}

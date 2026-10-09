@@ -8,11 +8,24 @@
     // Aplicar el tema antes de pintar para evitar parpadeo
     try { document.documentElement.dataset.theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark'; }
     catch (e) { document.documentElement.dataset.theme = 'dark'; }
+    // Skin: validar contra la lista conocida
+    try {
+      var s = localStorage.getItem('skin');
+      document.documentElement.dataset.skin = ['retro', 'neon', 'pastel', 'pixel'].indexOf(s) >= 0 ? s : 'retro';
+    } catch (e) { document.documentElement.dataset.skin = 'retro'; }
   </script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <button id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro"></button>
+  <div id="skin-box">
+    <select id="skin-select" aria-label="Elegir skin visual">
+      <option value="retro">Retro</option>
+      <option value="neon">Neón</option>
+      <option value="pastel">Pastel</option>
+      <option value="pixel">Pixel art</option>
+    </select>
+  </div>
   <h1 class="title">TETRIS</h1>
   <div class="wrapper">
     <div class="game-container">
